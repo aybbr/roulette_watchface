@@ -1,0 +1,35 @@
+{
+    "appKeys": {
+        "dummy": 0
+    },
+    "capabilities": [
+        ""
+    ],
+    "companyName": "Ayoub BRIKI",
+    "longName": "Roulette",
+    "projectType": "native",
+    "resources": {
+        "media": [
+            {
+                "file": "images/roulette.PNG",
+                "name": "ROULETTE",
+                "targetPlatforms": [
+                    "basalt",
+                    "chalk"
+                ],
+                "type": "png"
+            }
+        ]
+    },
+    "sdkVersion": "3",
+    "shortName": "Roulette",
+    "targetPlatforms": [
+        "basalt",
+        "chalk"
+    ],
+    "uuid": "277f53c8-674c-4983-8699-80c2d0ed4443",
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": true
+    }
+}
