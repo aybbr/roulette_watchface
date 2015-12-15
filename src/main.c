@@ -12,22 +12,18 @@
 #define ANIMATION_DURATION 500
 #define ANIMATION_DELAY    600
 static int32_t s_minutes;
-//static TextLayer *s_day_layer;
+
 static GBitmap *s_example_bitmap;
 static BitmapLayer *s_bitmap_layer;
 typedef struct {
   int hours;
   int minutes;
 } Time;
-//static WeekDay wd;
+
 static Window *s_main_window;
 static Layer *s_canvas_layer;
 static Layer *s_hands_layer;
 
-//static Layer *s_c_arc;
-//
-//static Layer      *date_layer;
-//static TextLayer  *date_text_layer;
 
 static GPoint s_center;
 static GPoint s_mini_cercle_center;
@@ -165,16 +161,12 @@ static void update_time() {
 }
 
 static void tick_handler(struct tm *tick_time, TimeUnits changed) {
- //char s_day_buffer[] = "ABC";
-  
+ 
   // Store time
   s_last_time.hours = tick_time->tm_hour;
   s_last_time.hours -= (s_last_time.hours > 12) ? 12 : 0;
   s_last_time.minutes = tick_time->tm_min;
 
-  /*for(int i = 0; i < 3; i++) {
-  //  s_color_channels[i] = rand() % 256;
-  }*/
  update_time();
   // Redraw
   if(s_canvas_layer) {
@@ -189,7 +181,6 @@ static int hours_to_minutes(int hours_out_of_12) {
 
 static void update_proc(Layer *layer, GContext *ctx) {
  
-  
   // Color background?
   GRect bounds = layer_get_bounds(layer);
   if(COLORS) {
@@ -305,9 +296,9 @@ static void update_proc_hands(Layer *layer, GContext *ctx){
 }
 
 static void window_load(Window *window) {
+  
   Layer *window_layer = window_get_root_layer(window);
   static BitmapLayer *s_bitmap_layer;
-//  Layer *s_days_arc= window_get_root_layer(window);
   GRect window_bounds = layer_get_bounds(window_layer);
   s_center = grect_center_point(&window_bounds);
   s_mini_cercle_center =  grect_center_point(&window_bounds);
@@ -316,8 +307,7 @@ static void window_load(Window *window) {
   
   s_canvas_layer = layer_create(window_bounds);
   s_hands_layer = layer_create(window_bounds);
-//  s_c_arc = layer_create(days_bounds);
-  // draw bitmap GPoint(s_mini_cercle_center.x -40 ,s_mini_cercle_center.y)
+
   time_layer_h = text_layer_create(GRect((s_mini_cercle_center.x -53) , s_mini_cercle_center.y-13, 25, 22));
   time_layer_m = text_layer_create(GRect((s_mini_cercle_center.x +29) ,s_mini_cercle_center.y-13, 25, 22));
   
@@ -344,7 +334,6 @@ s_bitmap_layer = bitmap_layer_create(GRect((s_mini_cercle_center.x - 35), (s_min
   bitmap_layer_set_compositing_mode(s_bitmap_layer, GCompOpSet);
 
 #endif
-
  // layer_add_child(window_layer, bitmap_layer_get_layer(s_bitmap_layer));
  
      layer_set_update_proc(s_canvas_layer, update_proc);
